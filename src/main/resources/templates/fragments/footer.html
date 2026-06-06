@@ -1,0 +1,15 @@
+<div th:fragment="footer">
+    <footer class="bg-dark text-light py-3 text-center mt-5">
+        <div th:switch="${vista}">
+            <p th:case="'formulario'">
+                📝 <strong>Creando un nuevo producto</strong> en DMTrack
+            </p>
+            <p th:case="*">
+                © 2025 <strong>DMTrack</strong> — Sistema de Inventario Inteligente<br>
+                Desarrollado por <strong>Danel Morales</strong> · 
+                <a href="https://github.com/" class="text-info text-decoration-none" target="_blank">GitHub</a> · 
+                LPA1 - Lenguaje de Programación Avanzado I
+            </p>
+        </div>
+    </footer>
+</div>

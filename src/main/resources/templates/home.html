@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{home.title}">DMTrack - Bienvenido</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .welcome-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .welcome-box {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .btn-dm {
+            background-color: #0d3b66;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        .btn-dm:hover {
+            background-color: #0a2c4d;
+        }
+    </style>
+</head>
+<body>
+<div class="welcome-container">
+    <div class="welcome-box">
+        <h1 class="mb-3">
+            👋 <span th:text="#{home.welcome}">Bienvenido a</span>
+            <span style="color:#0d3b66;">DMTrack</span>
+        </h1>
+        <p class="lead" th:text="#{home.subtitle}">Tu sistema de gestión de inventario inteligente</p>
+        <a href="/login" class="btn btn-dm mt-4 px-4 py-2" th:text="#{home.enter}">Entrar al sistema</a>
+
+        
+        <div class="mt-4">
+            <a href="?lang=es">Español</a> |
+            <a href="?lang=en">English</a> |
+            <a href="?lang=fr">Français</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

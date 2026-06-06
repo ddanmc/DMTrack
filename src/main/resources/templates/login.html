@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{login.title}">DMTrack - Iniciar sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .login-box {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 10%;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .btn-dm {
+            background-color: #0d3b66;
+            color: white;
+            border: none;
+        }
+        .btn-dm:hover {
+            background-color: #0a2c4d;
+        }
+    </style>
+</head>
+<body>
+<div class="login-box text-center">
+    <h2 class="mb-4">
+        🔐 <span th:text="#{login.heading}">Iniciar sesión en</span>
+        <span style="color:#0d3b66;">DMTrack</span>
+    </h2>
+    <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+            <input type="text" name="username" class="form-control" th:placeholder="#{login.username}" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password" class="form-control" th:placeholder="#{login.password}" required>
+        </div>
+        <button type="submit" class="btn btn-dm w-100" th:text="#{login.submit}">Entrar</button>
+    </form>
+
+   
+    <div class="mt-3">
+        <a href="?lang=es">Español</a> |
+        <a href="?lang=en">English</a> |
+        <a href="?lang=fr">Français</a>
+    </div>
+</div>
+</body>
+</html>
+

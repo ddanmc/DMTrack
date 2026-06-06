@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+<div class="container mt-4 mb-5">
+
+    
+    <div class="alert alert-danger border-3 border-start border-danger shadow-sm p-4 mb-5 mt-4 rounded text-center">
+        <h4 class="alert-heading"><i class="bi bi-stars"></i> ¡Vamos a crear algo nuevo!</h4>
+        <p class="mb-0">
+            Estás a punto de <strong>registrar un nuevo producto</strong> en tu inventario 
+            <span class="fw-bold text-danger">DMTrack</span>. Asegúrate de completar todos los campos correctamente 
+            para mantener una gestión precisa y eficiente.
+        </p>
+    </div>
+
+   
+    <h2 th:text="#{form.title}">NUEVO PRODUCTO</h2>
+
+    
+    <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="mb-3">
+            <label for="nombre" th:text="#{form.product.name}">Nombre</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            <div th:if="${#fields.hasErrors('nombre')}" class="text-danger small" th:errors="*{nombre}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="descripcion" th:text="#{form.product.description}">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" th:field="*{descripcion}" required>
+            <div th:if="${#fields.hasErrors('descripcion')}" class="text-danger small" th:errors="*{descripcion}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="precio" th:text="#{form.product.price}">Precio</label>
+            <input type="number" class="form-control" id="precio" th:field="*{precio}" required>
+            <div th:if="${#fields.hasErrors('precio')}" class="text-danger small" th:errors="*{precio}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="cantidad" th:text="#{form.product.quantity}">Cantidad</label>
+            <input type="number" class="form-control" id="cantidad" th:field="*{cantidad}" required>
+            <div th:if="${#fields.hasErrors('cantidad')}" class="text-danger small" th:errors="*{cantidad}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="stock" th:text="#{form.product.stock}">Stock</label>
+            <input type="number" class="form-control" id="stock" th:field="*{stock}" required>
+            <div th:if="${#fields.hasErrors('stock')}" class="text-danger small" th:errors="*{stock}"></div>
+        </div>
+
+        <div class="mb-4">
+            <label for="categoria" th:text="#{form.product.category}">Categoría</label>
+            <select class="form-select" id="categoria" name="categoria.id" required>
+                <option th:text="#{form.select.category}">-- Selecciona una categoría --</option>
+                <option th:each="cat : ${categorias}"
+                        th:value="${cat.id}"
+                        th:text="${cat.nombre}"
+                        th:selected="${producto.categoria != null and cat.id == producto.categoria.id}">
+                </option>
+            </select>
+            <div th:if="${#fields.hasErrors('categoria')}" class="text-danger small" th:errors="*{categoria}"></div>
+        </div>
+
+        
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-dm px-4">
+                <i class="bi bi-save"></i> <span th:text="#{button.save}">Guardar</span>
+            </button>
+            <a th:href="@{/productos}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left-circle"></i> <span th:text="#{button.cancel}">Cancelar</span>
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
+
